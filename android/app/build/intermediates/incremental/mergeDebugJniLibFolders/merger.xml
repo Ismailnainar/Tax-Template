@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\flutter\git clone flutter\ALJE_FLUTTER_APP\android\app\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\flutter\git clone flutter\ALJE_FLUTTER_APP\android\app\src\debug\jniLibs"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Flutter Projects (src)\ALJE\ALJE_FLUTTER_APP\android\app\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Flutter Projects (src)\ALJE\ALJE_FLUTTER_APP\android\app\src\debug\jniLibs"/></dataSet></merger>
+>>>>>>> 552896695eff17d82ca9ff5dffb5ba6963e34620
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Flutter Projects (src)\ALJE\ALJE_FLUTTER_APP\android\app\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Flutter Projects (src)\ALJE\ALJE_FLUTTER_APP\android\app\src\debug\jniLibs"/></dataSet></merger>
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Flutter Projects (src)\ALJE\ALJE_FLUTTER_APP\android\app\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Flutter Projects (src)\ALJE\ALJE_FLUTTER_APP\android\app\src\debug\jniLibs"/></dataSet></merger>
+>>>>>>> fd289a1 (add changes in the transaction table datas)

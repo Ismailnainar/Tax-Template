@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+#Mon Dec 09 15:36:11 IST 2024
+base.0=D\:\\flutter\\git clone flutter\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\flutter\\git clone flutter\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.2=D\:\\flutter\\git clone flutter\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.3=D\:\\flutter\\git clone flutter\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.4=D\:\\flutter\\git clone flutter\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+=======
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+#Tue Dec 10 10:25:43 IST 2024
+base.0=D\:\\Flutter Projects (src)\\ALJE\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\Flutter Projects (src)\\ALJE\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.2=D\:\\Flutter Projects (src)\\ALJE\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.3=D\:\\Flutter Projects (src)\\ALJE\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.4=D\:\\Flutter Projects (src)\\ALJE\\ALJE_FLUTTER_APP\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 552896695eff17d82ca9ff5dffb5ba6963e34620
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=0/classes.dex
+path.3=1/classes.dex
+path.4=9/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex
+renamed.4=classes5.dex

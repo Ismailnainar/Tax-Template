@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.aljeflutterapp-mergeDebugResources-33:/values-night-v8/values-night-v8.xml",
+            "map": [
+                {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    "source": "D:\\flutter\\git clone flutter\\ALJE_FLUTTER_APP\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+=======
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+                    "source": "D:\\Flutter Projects (src)\\ALJE\\ALJE_FLUTTER_APP\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+>>>>>>> 552896695eff17d82ca9ff5dffb5ba6963e34620
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "175,831",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "482,997"
+                    },
+                    "to": {
+                        "startLines": "2,6",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,236",
+                        "endLines": "5,8",
+                        "endColumns": "12,12",
+                        "endOffsets": "231,400"
+                    }
+                }
+            ]
+        }
+    ]
+}

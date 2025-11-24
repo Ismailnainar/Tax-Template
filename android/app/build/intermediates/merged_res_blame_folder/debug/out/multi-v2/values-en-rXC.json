@@ -1,0 +1,29 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.aljeflutterapp-mergeDebugResources-33:/values-en-rXC/values-en-rXC.xml",
+            "map": [
+                {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-3\\44df6f77762b9eea777d2e7d86211f10\\transformed\\core-1.13.1\\res\\values-en-rXC\\values-en-rXC.xml",
+=======
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+=======
+>>>>>>> fd289a1 (add changes in the transaction table datas)
+                    "source": "C:\\Users\\DIGIHEAL\\.gradle\\caches\\transforms-3\\44df6f77762b9eea777d2e7d86211f10\\transformed\\core-1.13.1\\res\\values-en-rXC\\values-en-rXC.xml",
+>>>>>>> 552896695eff17d82ca9ff5dffb5ba6963e34620
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,251,456,657,858,1065,1270,1482",
+                        "endColumns": "195,204,200,200,206,204,211,203",
+                        "endOffsets": "246,451,652,853,1060,1265,1477,1681"
+                    }
+                }
+            ]
+        }
+    ]
+}
