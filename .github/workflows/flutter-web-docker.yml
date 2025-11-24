@@ -6,15 +6,12 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_REPO: my-flutter-web               # change if needed (repo name part, not including username)
-  DOCKERFILE_PATH: ./Dockerfile            # change if your Dockerfile path differs
+  IMAGE_REPO: my-flutter-web
+  DOCKERFILE_PATH: ./Dockerfile
 
 jobs:
-  # -------------------------
-  # 1) Build Flutter web and push image to Docker Hub (GitHub-hosted runner)
-  # -------------------------
   build-and-push:
-    name: Build Flutter web & Push Image
+    name: Build Flutter web & push image
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -23,7 +20,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Flutter (explicit version)
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.3'
@@ -31,98 +28,82 @@ jobs:
           architecture: 'x64'
           cache: false
 
-      - name: Verify flutter
-        run: flutter --version
-
       - name: Flutter clean
         run: flutter clean
 
-      - name: Pub get
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Flutter web (release)
+      - name: Build Flutter web
         run: flutter build web --release
 
-      - name: Log into Docker Hub
+      - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build & push Docker image (multi-tag)
+      - name: Build & push Docker image
         uses: docker/build-push-action@v4
-        id: build_and_push
         with:
           context: .
           file: ${{ env.DOCKERFILE_PATH }}
           push: true
           platforms: linux/amd64
-          tags: |
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:latest
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:${{ github.sha }}
-          build-args: |
-            BUILD_DIR=build/web
+          # tags must be a single scalar according to the schema; provide as a comma-separated string
+          tags: "docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:latest,docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:${{ github.sha }}"
+          # build-args as a simple string
+          build-args: "BUILD_DIR=build/web"
         env:
           DOCKER_BUILDKIT: 1
 
       - name: Set output image tag
         run: echo "image_tag=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:latest" >> $GITHUB_OUTPUT
 
-  # -------------------------
-  # 2) Deploy on self-hosted runner (Windows)
-  #    - pulls the image pushed above
-  #    - stops old container & starts new one with -p 85:80
-  # -------------------------
   deploy-selfhosted:
-    name: Deploy to Self-Hosted Runner (Windows)
-    runs-on: [ self-hosted, Windows ]   # must match your runner labels exactly
-    needs: build-and-push
-    if: ${{ always() }}
-    steps:
-      - name: Confirm runner and docker
-        run: |
-          echo "Runner OS: $RUNNER_OS"
-          docker --version
-        shell: bash
+    name: Deploy to Windows Self-Hosted Runner
+    runs-on:
+      - self-hosted
+      - Windows
+    needs:
+      - build-and-push
 
-      # Optional: log into Docker Hub on the self-hosted runner
-      - name: Login to Docker Hub (self-hosted)
+    steps:
+      - name: Confirm Docker on runner
+        run: |
+          Write-Host "Runner OS: $env:RUNNER_OS"
+          docker --version
+        shell: powershell
+
+      - name: Login to Docker Hub on runner
         uses: docker/login-action@v2
         with:
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Stop and remove old container if exists
+      - name: Stop existing container if any
         run: |
-          # Windows shell: try to stop/remove container named flutter-web-app
-          powershell -Command "if ((docker ps -a --format '{{.Names}}' | Select-String -Pattern '^flutter-web-app$')) { docker rm -f flutter-web-app } else { echo 'no existing container' }"
-        shell: bash
+          if (docker ps -a --format "{{.Names}}" | Select-String "^flutter-web-app$") {
+            docker rm -f flutter-web-app
+          } else {
+            Write-Host "No existing container to remove"
+          }
+        shell: powershell
 
       - name: Pull latest image
-        run: |
-          docker pull docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:latest
-        shell: bash
+        run: docker pull docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:latest
+        shell: powershell
 
-      - name: Run new container (map host 85 -> container 80)
-        run: |
-          docker run -d --name flutter-web-app -p 85:80 docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:latest
-        shell: bash
+      - name: Run container (85 -> 80)
+        run: docker run -d --name flutter-web-app -p 85:80 docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO }}:latest
+        shell: powershell
 
-      - name: Wait for container to be healthy / show status
-        run: |
-          docker ps --filter "name=flutter-web-app" --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
-        shell: bash
+      - name: Open Windows firewall port 85
+        run: New-NetFirewallRule -DisplayName "Flutter Web 85" -Direction Inbound -LocalPort 85 -Protocol TCP -Action Allow -ErrorAction SilentlyContinue
+        shell: powershell
 
-      - name: Open Windows Firewall port 85 (optional)
-        # This step uses PowerShell to add a firewall rule so LAN devices can reach port 85.
-        run: |
-          powershell -Command "New-NetFirewallRule -DisplayName 'Allow Flutter Web 85' -Direction Inbound -LocalPort 85 -Protocol TCP -Action Allow -ErrorAction SilentlyContinue"
-        shell: bash
-
-      - name: Show host IP suggestion
-        run: |
-          # Print guidance to reach the app from LAN
-          powershell -Command "Write-Host 'Access the app at http://<RUNNER_LAN_IP>:85 — find runner IP with ipconfig on the host machine.'"
-        shell: bash
+      - name: Show how to access app
+        run: Write-Host "APP is running on the self-hosted runner. Access it via the runner host IP and port 85 (e.g. http://<RUNNER_IP>:85)."
+        shell: powershell
