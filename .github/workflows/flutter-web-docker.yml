@@ -27,7 +27,7 @@ jobs:
       - name: Set up Flutter (explicit version)
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.3'   # <-- Option B: a real Flutter version. Replace with the exact version you want.
+          flutter-version: '3.24.3'   # <-- Option B: a real Flutter version. Replace with the exact version you want need.
           channel: 'stable'
           architecture: 'x64'
           cache: false
